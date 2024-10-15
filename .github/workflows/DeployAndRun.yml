@@ -24,7 +24,7 @@ jobs:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t ${{ secrets.ACR_NAME }}/${{env.REPO_NAME}}:${{ github.sha }}
+        docker build . -t ${{ secrets.ACR_NAME }}/${{env.REPO_NAME.toLowerCase()}}:${{ github.sha }}
         docker push ${{ secrets.ACR_NAME }}/${{env.REPO_NAME}}:${{ github.sha }}
 
   deploy:
