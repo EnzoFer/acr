@@ -1,17 +1,15 @@
 FROM python:3.10-slim-bullseye
-ENV FLASK_DEBUG=production
+ENV FLASK_DEBUG=1
 ENV PROD_DATABASE_URI=""
 ENV PYTHONUNBUFFERED=1
 ENV PATH=$PATH:/home/flaskapp/.local/bin
 
-#creamos un usuario flaskapp
 RUN useradd --create-home --home-dir /home/flaskapp flaskapp
-#establecemos el directorio de trabajo
+
 WORKDIR /home/flaskapp
 USER flaskapp
 RUN mkdir app
-#copia la carpeta del proyecto a la imagen
-#COPY ./main ./main
+
 
 COPY ./app.py .
 
