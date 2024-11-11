@@ -16,7 +16,6 @@ def application_data():
 
 envdump.add_section("application", application_data)
 
-# Agrega rutas para el health check y el dump del entorno
 app.add_url_rule("/healthcheck", "healthcheck", view_func=lambda: health.run())
 app.add_url_rule("/environment", "environment", view_func=lambda: envdump.run())
 
