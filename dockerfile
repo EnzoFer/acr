@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000
 
 # Define el comando para ejecutar la aplicación
-ENTRYPOINT [ "python3", "app.py" ]
+CMD python3, app.py
