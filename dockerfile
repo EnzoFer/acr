@@ -1,18 +1,20 @@
-FROM python:3.10-slim-bullseye
-ENV PYTHONUNBUFFERED=1
-RUN useradd --create-home --home-dir /home/flaskapp flaskapp
+# Usa la imagen oficial de Python como base
+FROM python:3.9-slim
 
-WORKDIR /home/flaskapp
-USER flaskapp
-RUN mkdir app
+# Establecer el directorio de trabajo dentro del contenedor
+WORKDIR /app
 
+# Copiar el archivo requirements.txt al contenedor
+COPY requirements.txt .
 
-COPY ./app.py .
-
-ADD requirements.txt ./requirements.txt
-
+# Instalar las dependencias de Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-#puerto por el que escucha la imagen
+# Copiar el contenido de la carpeta actual al directorio de trabajo del contenedor
+COPY . .
+
+# Exponer el puerto en el que la aplicación se ejecutará
 EXPOSE 5000
-CMD python3 ./app.py
+
+# Comando para ejecutar la aplicación
+CMD ["python", "app.py"]

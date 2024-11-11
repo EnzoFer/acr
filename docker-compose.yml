@@ -1,6 +1,0 @@
-version: '3.7'
-
-services:
-  helloworld:
-    image: user_ms:1.0.0
-    restart: always
